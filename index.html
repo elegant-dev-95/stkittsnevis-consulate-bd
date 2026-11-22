@@ -42,9 +42,18 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(36px,4
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin:32px 0}
 .fact{background:#fff;padding:20px;border-left:3px solid var(--gold)}
 .fact strong{display:block;color:var(--navy);font-size:14px;margin-bottom:4px}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:12px}
-.gallery img{width:100%;height:220px;object-fit:cover;border-radius:2px;box-shadow:0 6px 20px rgba(0,0,0,.08)}
-.gallery .caption{margin-top:8px}
+.carousel{position:relative;max-width:900px;margin:32px auto;overflow:hidden;border-radius:2px;box-shadow:0 10px 40px rgba(0,0,0,.12)}
+.carousel-track{display:flex;transition:transform 0.5s ease}
+.carousel-slide{min-width:100%;position:relative}
+.carousel-slide img{width:100%;height:480px;object-fit:cover;display:block}
+.carousel-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.65));color:#fff;padding:20px 24px;font-size:14px;letter-spacing:.04em}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(10,31,53,.7);color:#fff;border:none;width:48px;height:48px;font-size:22px;cursor:pointer;border-radius:2px;transition:background .2s}
+.carousel-btn:hover{background:var(--gold);color:var(--navy)}
+.carousel-btn.prev{left:12px}
+.carousel-btn.next{right:12px}
+.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+.carousel-dots span{width:8px;height:8px;border-radius:50%;background:#ccc;cursor:pointer}
+.carousel-dots span.active{background:var(--gold)}
 .map-wrap{margin:28px 0;border-radius:2px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.1)}
 .map-wrap iframe{width:100%;height:380px;border:0}
 .contact-wrap{background:var(--navy);color:#fff;padding:80px 10%}
@@ -69,23 +78,23 @@ button[type=submit]{background:var(--gold);color:var(--navy-deep);border:none;pa
 .success{display:none;background:rgba(196,163,90,.12);border:1px solid var(--gold);color:var(--gold-light);padding:16px;margin-top:14px}
 footer{background:var(--navy-deep);color:#b0bcc9;padding:26px 10%;font-size:11.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer a{color:var(--gold-light);text-decoration:none}
-@media(max-width:780px){.nav{flex-direction:column;align-items:flex-start}.links{gap:18px}.section,.contact-wrap{padding:60px 7%}.split,.contact-grid,.row{grid-template-columns:1fr;gap:36px}.form-card{padding:32px 24px}}
+@media(max-width:780px){.nav{flex-direction:column;align-items:flex-start}.links{gap:18px}.section,.contact-wrap{padding:60px 7%}.split,.contact-grid,.row{grid-template-columns:1fr;gap:36px}.form-card{padding:32px 24px}.carousel-slide img{height:320px}}
 </style>
 </head>
 <body>
 <div class="top">Dhaka · Bangladesh</div>
 <header class="nav">
-  <a class="brand" href="index.html">
-    <img src="skn-logo.jpg" alt="Coat of Arms of Saint Kitts and Nevis">
+  <a class="brand" href="#home">
+    <img src="skn-logo-sm.jpg" alt="Coat of Arms of Saint Kitts and Nevis">
     <span class="brand-text">Saint Kitts and Nevis<small>Honorary Consulate · Bangladesh</small></span>
   </a>
   <nav class="links">
-    <a href="consulate.html">The Consulate</a>
-    <a href="honorary-consul.html">Honorary Consul</a>
-    <a href="federation.html">The Federation</a>
-    <a href="highlights.html">Highlights</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
+    <a href="#consulate">The Consulate</a>
+    <a href="#consul">Honorary Consul</a>
+    <a href="#country">The Federation</a>
+    <a href="#highlights">Highlights</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 <main id="home">
@@ -95,20 +104,155 @@ footer a{color:var(--gold-light);text-decoration:none}
       <h1>Honorary Consulate of Saint Kitts and Nevis</h1>
       <p>Welcome to the Honorary Consulate of Saint Kitts and Nevis in Bangladesh. We seek to strengthen friendship, encourage cooperation and build meaningful connections between our two countries.</p>
       <div>
-        <a href="contact.html" class="btn">Contact Us</a>
-        <a href="federation.html" class="btn btn-outline">Discover the Federation</a>
+        <a href="#contact" class="btn">Contact Us</a>
+        <a href="#country" class="btn btn-outline">Discover the Federation</a>
       </div>
     </div>
   </section>
-  <section class="section">
-    <div class="kicker">Welcome</div>
-    <h2>Strengthening ties between two nations</h2>
-    <p class="intro">The Honorary Consulate serves as a bridge for friendship, cultural exchange and cooperation between Saint Kitts and Nevis and Bangladesh.</p>
-    <div class="facts" style="margin-top:36px">
-      <div class="fact"><strong>The Consulate</strong><a href="consulate.html" style="color:var(--navy)">Learn more →</a></div>
-      <div class="fact"><strong>Honorary Consul</strong><a href="honorary-consul.html" style="color:var(--navy)">Mr. Tanveer Ahmed →</a></div>
-      <div class="fact"><strong>The Federation</strong><a href="federation.html" style="color:var(--navy)">Discover SKN →</a></div>
-      <div class="fact"><strong>Highlights</strong><a href="highlights.html" style="color:var(--navy)">History & beauty →</a></div>
+  <section class="section" id="consulate">
+    <div class="kicker">The Consulate</div>
+    <h2>A bridge between two nations</h2>
+    <p class="intro">The Honorary Consulate of Saint Kitts and Nevis in Bangladesh serves as a point of contact, promoting awareness of the Federation and supporting closer diplomatic, cultural and commercial relations between our two countries.</p>
+    <p>Established in January 2024, the consulate assists members of the public, businesses and visitors with general information and directs official enquiries to the appropriate authorities of Saint Kitts and Nevis.</p>
+    <p>Bangladesh and Saint Kitts and Nevis established formal diplomatic relations on 31 August 2020 through a Joint Communiqué signed in Washington, D.C. Both countries share a history of Commonwealth membership and collaborate on multilateral issues.</p>
+    <div class="split" style="margin-top:48px">
+      <div>
+        <img class="building" src="office-reception-sm.jpg" alt="Reception of the Honorary Consulate">
+        <div class="caption">Reception · AJ Heights, Dhaka</div>
+      </div>
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',serif;color:var(--navy);font-size:32px">Our Role</h3>
+        <ul style="line-height:1.85">
+          <li>Promote awareness of Saint Kitts and Nevis in Bangladesh</li>
+          <li>Support friendship and cooperation between the two countries</li>
+          <li>Facilitate cultural, commercial and people-to-people connections</li>
+          <li>Provide general information and direction for enquiries</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="section alt" id="consul">
+    <div class="split">
+      <div>
+        <div class="kicker">Honorary Consul</div>
+        <h2>Mr. Tanveer Ahmed</h2>
+        <p class="intro">Mr. Tanveer Ahmed serves as the Honorary Consul of the Federation of Saint Kitts and Nevis in Bangladesh.</p>
+        <p>In this capacity, he works to strengthen friendship and cooperation between Saint Kitts and Nevis and Bangladesh. He supports closer diplomatic engagement and encourages connections in trade and investment, tourism, cultural exchange, and people-to-people ties.</p>
+        <p>The Honorary Consul has hosted receptions marking the Independence Day of Saint Kitts and Nevis, bringing together members of the diplomatic community, government officials, business leaders and distinguished guests to celebrate the bilateral relationship.</p>
+        <p>The consulate was established in January 2024. For official consular matters, enquiries are directed to the appropriate authorities of Saint Kitts and Nevis.</p>
+      </div>
+      <div>
+        <img class="portrait" src="tanveer-ahmed-sm.jpg" alt="Mr. Tanveer Ahmed, Honorary Consul">
+        <div class="caption">Mr. Tanveer Ahmed · Honorary Consul</div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="country">
+    <div class="kicker">The Federation</div>
+    <h2>Discover Saint Kitts and Nevis</h2>
+    <p class="intro">A beautiful twin-island nation in the Eastern Caribbean, Saint Kitts and Nevis is known for its rich history, vibrant culture, natural beauty and warm hospitality. It is the smallest sovereign federation in the world and the smallest country in the Western Hemisphere by both area and population.</p>
+    <div class="facts">
+      <div class="fact"><strong>Official Name</strong>Federation of Saint Kitts and Nevis</div>
+      <div class="fact"><strong>Capital</strong>Basseterre (Saint Kitts)</div>
+      <div class="fact"><strong>Independence</strong>19 September 1983</div>
+      <div class="fact"><strong>Official Language</strong>English</div>
+      <div class="fact"><strong>Currency</strong>Eastern Caribbean Dollar (XCD)</div>
+      <div class="fact"><strong>Motto</strong>Country Above Self</div>
+    </div>
+    <p>The islands were among the first in the Caribbean to be colonised by Europeans. Saint Kitts is often called the “Mother Colony of the West Indies.” After centuries of British and French presence, the federation achieved independence in 1983 and remains a Commonwealth realm.</p>
+    <p>Diplomatic relations with Bangladesh were established on 31 August 2020. Both countries share membership in the Commonwealth and collaborate on multilateral issues.</p>
+    <p style="margin-top:24px">
+      <a href="https://www.gov.kn/" target="_blank" rel="noopener" style="color:var(--navy);font-weight:500;border-bottom:1px solid var(--gold);text-decoration:none">Government of Saint Kitts and Nevis</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.mofa.gov.kn/" target="_blank" rel="noopener" style="color:var(--navy);font-weight:500;border-bottom:1px solid var(--gold);text-decoration:none">Ministry of Foreign Affairs</a>
+    </p>
+  </section>
+  <section class="section alt" id="highlights">
+    <div class="kicker">Highlights</div>
+    <h2>A twin-island nation of history and beauty</h2>
+    <p class="intro">Saint Kitts and Nevis offers a rich blend of heritage, natural scenery and Caribbean culture. The federation is renowned for its well-preserved history, lush landscapes, and warm people.</p>
+    <h3 style="font-family:'Cormorant Garamond',serif;color:var(--navy);font-size:28px;margin:32px 0 12px">Historic & Cultural Sites</h3>
+    <ul style="max-width:760px;line-height:1.85;color:var(--ink)">
+      <li><strong>Brimstone Hill Fortress National Park</strong> — A UNESCO World Heritage Site and one of the best-preserved 17th–18th century fortifications in the Caribbean. Built primarily by enslaved Africans, it is often called the “Gibraltar of the West Indies.”</li>
+      <li><strong>Basseterre</strong> — The capital of Saint Kitts, featuring the historic Circus with the Berkeley Memorial clock, Independence Square, Georgian architecture, and the National Museum.</li>
+      <li><strong>Charlestown, Nevis</strong> — The charming capital of Nevis, known for its Georgian buildings and as the birthplace of Alexander Hamilton. The Museum of Nevis History is located in the house where he was born.</li>
+      <li><strong>St. Kitts Scenic Railway</strong> — The last railway in the West Indies, originally built to transport sugar cane and now offering scenic tours through the island’s countryside.</li>
+    </ul>
+    <h3 style="font-family:'Cormorant Garamond',serif;color:var(--navy);font-size:28px;margin:32px 0 12px">Natural Beauty</h3>
+    <ul style="max-width:760px;line-height:1.85;color:var(--ink)">
+      <li><strong>Mount Liamuiga</strong> — A dormant volcano and the highest point on Saint Kitts. Hiking through its rainforest and cloud forest leads to a dramatic crater and panoramic views.</li>
+      <li><strong>Beaches</strong> — Pinney’s Beach on Nevis and the beaches of Frigate Bay and South Friar’s Bay on Saint Kitts.</li>
+      <li>Lush rainforests, volcanic landscapes, and clear Caribbean waters ideal for snorkelling and diving.</li>
+    </ul>
+    <p style="margin-top:24px;max-width:760px">The economy is primarily driven by tourism, with additional activity in financial services and light manufacturing. Sugar production, once the mainstay, ended in 2005. The islands are known for their hospitality and the motto <em>Country Above Self</em>.</p>
+  </section>
+  <section class="section" id="gallery">
+    <div class="kicker">Gallery</div>
+    <h2>Glimpses of the Federation and the Consulate</h2>
+    <p class="intro" style="margin-bottom:28px">Scenes from Saint Kitts and Nevis and the Honorary Consulate in Dhaka.</p>
+    <div class="carousel" id="galleryCarousel">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80" alt="Caribbean coastline">
+          <div class="carousel-caption">Caribbean coastline</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Tropical beach">
+          <div class="carousel-caption">Island beaches</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80" alt="Tropical paradise">
+          <div class="carousel-caption">Tropical shores</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=1200&q=80" alt="Palm trees and ocean">
+          <div class="carousel-caption">Palm-fringed shores</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=1200&q=80" alt="Caribbean waters">
+          <div class="carousel-caption">Clear Caribbean waters</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="skn-logo-sm.jpg" alt="Coat of Arms of Saint Kitts and Nevis">
+          <div class="carousel-caption">Coat of Arms · Country Above Self</div>
+        </div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous">‹</button>
+      <button class="carousel-btn next" aria-label="Next">›</button>
+    </div>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </section>
+  <section class="contact-wrap" id="contact">
+    <div class="kicker">Visit or contact us</div>
+    <h2>Honorary Consulate of Saint Kitts and Nevis in Bangladesh</h2>
+    <div class="contact-grid" style="margin-top:40px">
+      <div class="contact-info">
+        <p><strong>Office</strong>AJ Heights, Bir Uttam Rafiqul Islam Ave,<br>Dhaka 1212, Bangladesh.</p>
+        <p><strong>Email</strong><a href="mailto:honconsul@stkittsnevisconsulatebd.com">honconsul@stkittsnevisconsulatebd.com</a></p>
+        <p><strong>Website</strong><a href="https://stkittsnevisconsulatebd.com/" target="_blank" rel="noopener">stkittsnevisconsulatebd.com</a></p>
+        <p><strong>Map</strong><a href="https://maps.app.goo.gl/qBtZLcsMLAVftKAV8" target="_blank" rel="noopener">View on Google Maps</a></p>
+        <div class="map-wrap" style="margin-top:24px">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.5!2d90.42!3d23.78!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDQ2JzQ4LjAiTiA5MMKwMjUnMTIuMCJF!5e0!3m2!1sen!2sbd!4v1700000000000" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <p class="note">For official consular, travel or immigration matters, please consult the relevant authorities of Saint Kitts and Nevis.</p>
+      </div>
+      <div class="form-card">
+        <h3>Send an enquiry</h3>
+        <div class="sub">For general information and non-official matters. We will respond as soon as possible.</div>
+        <form id="contactForm" action="https://formsubmit.co/marketingrealestate@elegant-fashion.org" method="POST">
+          <input type="hidden" name="_subject" value="New enquiry from Honorary Consulate website">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <div class="row">
+            <div class="field"><label for="name">Full name</label><input type="text" id="name" name="name" required placeholder="Your name"></div>
+            <div class="field"><label for="email">Email address</label><input type="email" id="email" name="email" required placeholder="you@example.com"></div>
+          </div>
+          <div class="field"><label for="subject">Subject</label><input type="text" id="subject" name="subject" required placeholder="Subject of your enquiry"></div>
+          <div class="field"><label for="message">Message</label><textarea id="message" name="message" required placeholder="How may we assist you?"></textarea></div>
+          <button type="submit">Send message</button>
+          <div class="success" id="successMsg">Thank you. Your message has been received. We will be in touch shortly.</div>
+        </form>
+      </div>
     </div>
   </section>
 </main>
@@ -116,5 +260,33 @@ footer a{color:var(--gold-light);text-decoration:none}
   <span>© 2026 Honorary Consulate of Saint Kitts and Nevis in Bangladesh</span>
   <span><a href="https://stkittsnevisconsulatebd.com/" target="_blank" rel="noopener">stkittsnevisconsulatebd.com</a></span>
 </footer>
+<script>
+(function(){
+  const track = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const prev = document.querySelector('.carousel-btn.prev');
+  const next = document.querySelector('.carousel-btn.next');
+  const dotsContainer = document.getElementById('carouselDots');
+  if(!track || !slides.length) return;
+  let index = 0;
+  function goTo(i){
+    index = (i + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (index * 100) + '%)';
+    document.querySelectorAll('.carousel-dots span').forEach((d,di)=>d.classList.toggle('active', di===index));
+  }
+  slides.forEach((_,i)=>{
+    const d = document.createElement('span');
+    d.addEventListener('click',()=>goTo(i));
+    dotsContainer.appendChild(d);
+  });
+  if(prev) prev.addEventListener('click',()=>goTo(index-1));
+  if(next) next.addEventListener('click',()=>goTo(index+1));
+  goTo(0);
+  setInterval(()=>goTo(index+1), 5000);
+})();
+document.getElementById('contactForm')?.addEventListener('submit',function(){
+  setTimeout(()=>{document.getElementById('successMsg').style.display='block'},800);
+});
+</script>
 </body>
 </html>
