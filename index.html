@@ -34,9 +34,9 @@ body{margin:0;font-family:'Inter',system-ui,sans-serif;color:var(--ink);line-hei
 h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(36px,4.4vw,48px);line-height:1.1;color:var(--navy);margin:10px 0 22px}
 .kicker{font-size:11.5px;color:var(--gold);text-transform:uppercase;letter-spacing:.22em;font-weight:600}
 .intro{color:var(--muted);max-width:720px;font-size:16.5px}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .split>div{min-width:0}
-.portrait{width:100%;max-width:420px;height:auto;max-height:520px;object-fit:cover;object-position:center top;border-radius:1px;box-shadow:0 12px 40px rgba(10,31,53,.12);display:block;margin-left:auto}
+.portrait{width:100%;max-width:420px;height:auto;max-height:520px;object-fit:cover;object-position:center top;border-radius:1px;box-shadow:0 12px 40px rgba(10,31,53,.12);display:block;margin:0 auto}
 .building{width:100%;display:block;max-height:480px;object-fit:cover;border-radius:1px;box-shadow:0 12px 40px rgba(10,31,53,.1)}
 .caption{font-size:11.5px;color:var(--muted);margin-top:12px;letter-spacing:.04em;text-transform:uppercase}
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin:32px 0}
@@ -141,7 +141,7 @@ footer a{color:var(--gold-light);text-decoration:none}
         <p>The Honorary Consul has hosted receptions marking the Independence Day of Saint Kitts and Nevis, bringing together members of the diplomatic community, government officials, business leaders and distinguished guests to celebrate the bilateral relationship.</p>
         <p>The consulate was established in January 2024. For official consular matters, enquiries are directed to the appropriate authorities of Saint Kitts and Nevis.</p>
       </div>
-      <div>
+      <div style="display:flex;flex-direction:column;align-items:center">
         <img class="portrait" src="tanveer-ahmed.jpg" alt="Mr. Tanveer Ahmed, Honorary Consul">
         <div class="caption">Mr. Tanveer Ahmed · Honorary Consul</div>
       </div>
